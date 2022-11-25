@@ -10,6 +10,7 @@ interface Props {
   btnText: string;
   taskList: ITask[];
   setTaskList?: React.Dispatch<React.SetStateAction<ITask[]>>
+
 }
 
 function TaskForm({btnText, taskList, setTaskList}: Props) {
