@@ -11,10 +11,11 @@ interface Props {
   taskList: ITask[];
   setTaskList?: React.Dispatch<React.SetStateAction<ITask[]>>
   task?: ITask | null
+  handleUpdate?(id: number, title: string, difficulty: number): void
 
 }
 
-function TaskForm({btnText, taskList, setTaskList, task}: Props) {
+function TaskForm({btnText, taskList, setTaskList, task, handleUpdate}: Props){
 
   const [id, setId] = useState<number>(0)
   const [title, setTitle] = useState<string>('')
@@ -32,6 +33,9 @@ function TaskForm({btnText, taskList, setTaskList, task}: Props) {
 
     e.preventDefault()
 
+    if(handleUpdate){
+      handleUpdate(id,title, difficulty)
+    } else{
     const id = Math.floor(Math.random()*1000)
     const newTask: ITask = {id, title, difficulty}
 
@@ -62,6 +66,6 @@ function TaskForm({btnText, taskList, setTaskList, task}: Props) {
       <input type="submit" value={btnText} />
     </form>
   )
-}
+}}
 
 export default TaskForm
