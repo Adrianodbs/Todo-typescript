@@ -33,7 +33,8 @@ function TaskForm({btnText, taskList, setTaskList, task, handleUpdate}: Props){
 
     e.preventDefault()
 
-    if(handleUpdate){
+    if(taskList){
+      if(handleUpdate){
       handleUpdate(id,title, difficulty)
     } else{
     const id = Math.floor(Math.random()*1000)
@@ -43,8 +44,11 @@ function TaskForm({btnText, taskList, setTaskList, task, handleUpdate}: Props){
 
     setTitle('')
     setDifficulty(0)
-  }
+      }
 
+    }
+  }
+    
   const handleChange = (e: ChangeEvent<HTMLInputElement>)=>{
     if(e.target.name === 'title'){
       setTitle(e.target.value)
@@ -66,6 +70,6 @@ function TaskForm({btnText, taskList, setTaskList, task, handleUpdate}: Props){
       <input type="submit" value={btnText} />
     </form>
   )
-}}
+}
 
 export default TaskForm
